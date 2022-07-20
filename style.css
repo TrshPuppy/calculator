@@ -1,27 +1,42 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Press+Start+2P&family=Trispace&display=swap');
+
+html
+{
+    position:relative;
+    min-height: 100%;
+}
 body
 {
     display:flex;
     flex-flow: column nowrap;
     align-items: center;
     justify-content: center;
+    
 }
 
 header
 {
-    padding: 20px;
-    font-size: 50px;
+    padding:10px;
+    padding-top:50px;
+    font-size: 40px;
     font-weight: bold;
+    font-family: 'Press Start 2P','Courier New', Courier, monospace;
 }
+
 .main
 {
     background-color: red;
-    min-height: 60vh;
-    min-width: 45vh;
+    height: 60vh;
+    width: 45vh;
+    position:relative;
+    transform: translateY(15%);
 }
 
 footer
 {
     text-align: center;
-    padding: 20px
+    padding: 20px;
+    position:absolute;
+    top: 90%;
 }
