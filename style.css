@@ -81,7 +81,8 @@ header
 .numpad
 {
     display:grid;
-    
+    height:50%;
+    width: 95%;
 }
 
 footer
