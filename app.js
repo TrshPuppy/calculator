@@ -15,15 +15,20 @@ for(let i = 1; i <=9; i++)
     numpadButton.innerText = i;
     numpadButton.style.textAlign = 'center';
     numpadButton.dataset.symbol = i;
+    numpadButton.classList = "number";
     numpad.insertAdjacentElement('beforeend', numpadButton);
-
-    // Add event listeners to numpad buttons:
-    numpadButton.addEventListener('click', e =>
-    {
-        numberClicked = parseInt(e.target.dataset.symbol);
-        console.log(numberClicked);
-    });
 }
+
+// Add event listeners to numpad buttons:
+let numberButtons = document.querySelectorAll('.number')
+numberButtons.forEach(button =>
+    {
+        button.addEventListener('click', e =>
+        {
+            numberClicked = e.target.dataset.symbol;
+            console.log(numberClicked);
+        })
+    })
 
 // Add event listeners to operators:
 let operatorButtons = document.querySelectorAll('.operator');
@@ -35,8 +40,4 @@ operatorButtons.forEach(button =>
             console.log(operatorClicked);
         })
     })
-console.log(operatorClicked);
 
-// Add event listeners to bottom row:
-
-console.log(bottomRowButtons);
