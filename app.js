@@ -1,6 +1,8 @@
 // Some globals:
 let numberClicked = 0;
 let operatorClicked;
+let screenInput = document.querySelector('.input-row');
+let screenResult =document.querySelector('.result-row');
 
 // Generate numpad:
 let numpad = document.querySelector('.numpad')
@@ -19,14 +21,15 @@ for(let i = 1; i <=9; i++)
     numpad.insertAdjacentElement('beforeend', numpadButton);
 }
 
-// Add event listeners to numpad buttons:
+// Add event listeners to numbers:
 let numberButtons = document.querySelectorAll('.number')
 numberButtons.forEach(button =>
     {
         button.addEventListener('click', e =>
         {
             numberClicked = e.target.dataset.symbol;
-            console.log(numberClicked);
+            //console.log(numberClicked);
+            updateInput(numberClicked);
         })
     })
 
@@ -37,7 +40,20 @@ operatorButtons.forEach(button =>
         button.addEventListener('click', e =>
         {
             operatorClicked = e.target.dataset.symbol;
-            console.log(operatorClicked);
+            //console.log(operatorClicked);
+            updateResult(operatorClicked)
         })
     })
 
+// Update screen input row:
+function updateInput(num)
+{
+    screenInput.textContent = num;
+    console.log(screenInput);
+}
+
+// Update screen result row:
+function updateResult(symbol)
+{
+    screenResult.textContent += screenInput;
+}
