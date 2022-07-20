@@ -78,6 +78,12 @@ header
     margin-inline: 10px;
 }
 
+.numpad
+{
+    display:grid;
+    
+}
+
 footer
 {
     text-align: center;
