@@ -26,11 +26,56 @@ header
 
 .main
 {
+    display:flex;
+    flex-flow:column nowrap;
+    align-items: center;
+    justify-content: center;
     background-color: red;
     height: 60vh;
     width: 45vh;
     position:relative;
     transform: translateY(15%);
+}
+
+.screen
+{
+    display:flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 95%;
+    height: 10%;
+    background-color: grey;
+    padding-top:10px;
+    padding-bottom: 10px;
+}
+
+.result-row
+{
+    font-size:medium;
+    padding-inline: 5px;
+}
+
+.input-row
+{
+    font-size: x-large;
+    padding-inline: 5px;
+}
+.first-row
+{
+    display:flex;
+    flex-flow:row nowrap;
+    justify-content: space-evenly;
+    padding:10px;
+    min-width: 95%;
+}
+
+.first-row button
+{
+    padding:10px;
+    cursor:pointer;
+    min-width: 48%;
+    margin-inline: 10px;
 }
 
 footer
