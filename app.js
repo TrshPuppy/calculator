@@ -25,9 +25,9 @@ for(let i = 1; i <=9; i++)
     });
 }
 
-// Add event listeners to right row operators:
-let rightRowButtons = document.querySelectorAll('.right-row button');
-rightRowButtons.forEach(button =>
+// Add event listeners to operators:
+let operatorButtons = document.querySelectorAll('.operator');
+operatorButtons.forEach(button =>
     {
         button.addEventListener('click', e =>
         {
@@ -35,24 +35,8 @@ rightRowButtons.forEach(button =>
             console.log(operatorClicked);
         })
     })
-console.log(rightRowButtons);
+console.log(operatorClicked);
 
 // Add event listeners to bottom row:
-let bottomRowButtons = document.querySelectorAll('.bottom-row button')
-bottomRowButtons.forEach(button =>
-    {
-        button.addEventListener('click', e =>
-        {
-            if(e.target.dataset.symbol == "0" || e.target.dataset.symbol == ".")
-            {
-                numberClicked = e.target.dataset.symbol;
-                console.log(numberClicked);
-            }
-            else
-            {
-                operatorClicked = e.target.dataset.symbol;
-                console.log(operatorClicked);
-            }
-        });
-    });
+
 console.log(bottomRowButtons);
