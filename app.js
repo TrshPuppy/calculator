@@ -1,18 +1,16 @@
 // Calculator blueprint:
 class Calculator
 {
-    constructor(previousScreenTextElement, currentScreenTextElement)
+    constructor(previousScreenText, currentScreenText)
     {
-        this.previousScreenTextElement = previousScreenTextElement;
-        this.currentScreenTextElement = currentScreenTextElement;
+        this.previousScreenText = previousScreenText;
+        this.currentScreenText = currentScreenText;
     }
 
     // Clear screen
     clearScreen()
     {
-        this.currentScreen = '';
-        this.previousScreen = '';
-        this.operation = undefined;
+        
     }
     // Delete single number from current screen:
     deleteNumber()
@@ -22,13 +20,15 @@ class Calculator
     // Append number to current screen:
     appendNumber(num)
     {
-        this.currentScreenTextElement.innerText += num.toString();
+        currentScreenText.textContent += num;
+        //console.log(currentScreenText.textContent);
     }
     // Choose operator
     chooseOperator(operator)
     {
-        this.previousScreenTextElement.innerText += currentScreenTextElement.innerText.toString() + operator.toString();
-        this.currentScreenTextElement.innerText = '';
+        previousScreenText.textContent += (currentScreenText.textContent + operator);
+        this.updateScreen();
+        console.log(operator);
     }
     // Compute operation
     compute()
@@ -38,7 +38,7 @@ class Calculator
     // Update screen
     updateScreen()
     {
-        this.currentScreenTextElement.innerText = currentScreenTextElement;
+        currentScreenText.textContent = '';
     }
 }
 
@@ -50,20 +50,18 @@ const deleteButton = document.querySelector('[data-delete]');
 const equalsButton = document.querySelector('[data-equals]');
 
 // Screen:
-const previousScreenTextElement = document.querySelector('[data-previous-operand]');
-const currentScreenTextElement = document.querySelector('[data-current-operand]');
+const previousScreenText = document.querySelector('[data-previous-operand]');
+const currentScreenText = document.querySelector('[data-current-operand]');
 
 // Create calculator instance:
-const calculator = new Calculator(previousScreenTextElement, currentScreenTextElement);
+const calculator = new Calculator(previousScreenText, currentScreenText);
 
 // Add event listeners to buttons:
 numberButtons.forEach(number =>
     {
         number.addEventListener('click', () =>
         {
-            calculator.appendNumber(number.innerText);
-            calculator.updateScreen;
-            console.log(number.innerText);
+            calculator.appendNumber(number.textContent);
         })
     })
 
@@ -71,7 +69,7 @@ operatorButtons.forEach(button =>
     {
         button.addEventListener('click', () =>
         {
-            calculator.chooseOperator(button.innerText);
+            calculator.chooseOperator(button.textContent);
         })
     })
 
