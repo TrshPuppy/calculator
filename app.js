@@ -41,19 +41,27 @@ operatorButtons.forEach(button =>
         {
             operatorClicked = e.target.dataset.symbol;
             //console.log(operatorClicked);
-            updateResult(operatorClicked)
+            //updateResult(operatorClicked)
         })
     })
 
 // Update screen input row:
+updateInput(numberClicked);
 function updateInput(num)
 {
-    screenInput.textContent = num;
+    if(screenInput.textContent == 0)
+    {
+        screenInput.textContent = num;
+    }
+    else
+    {
+        screenInput.textContent += num;
+    }
     console.log(screenInput);
 }
 
 // Update screen result row:
-function updateResult(symbol)
-{
-    screenResult.textContent += screenInput;
-}
+// function updateResult(symbol)
+// {
+//     screenResult.textContent += toString(screenInput);
+// }
