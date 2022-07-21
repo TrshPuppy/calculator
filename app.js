@@ -1,9 +1,12 @@
 // Some globals:
-let numberClicked = 0;
+let numberClicked;
 let operatorClicked;
-let shouldReset = false;
+let operationString = "";
 let inputScreen = document.querySelector('.input-row');
 let resultScreen = document.querySelector('.result-row');
+let equalsButton = document.querySelector('.equals');
+
+equalsButton.addEventListener('click', calculateOperation);
 
 // Generate numpad:
 let numpad = document.querySelector('.numpad')
@@ -29,8 +32,8 @@ numberButtons.forEach(button =>
         button.addEventListener('click', e =>
         {
             numberClicked = e.target.dataset.symbol;
+            updateOperation(numberClicked);
             //console.log(numberClicked);
-            updateInput(numberClicked);
         })
     })
 
@@ -41,11 +44,24 @@ operatorButtons.forEach(button =>
         button.addEventListener('click', e =>
         {
             operatorClicked = e.target.dataset.symbol;
-            shouldReset == true;
+            updateOperation(operatorClicked);
             //console.log(operatorClicked);
-            updateResult(operatorClicked)
         })
     })
+
+// Update current operation:
+function updateOperation(buttonClicked)
+{
+    operationString += String(buttonClicked);
+    console.log(operationString);
+}
+
+// Calculate operation:
+function calculateOperation(string)
+{
+    let result = Number(operationString);
+    console.log(parseInt(operationString));
+}
 
 // Update screen input row:
 
