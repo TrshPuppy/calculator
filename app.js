@@ -27,7 +27,8 @@ class Calculator
     // Choose operator
     chooseOperator(operator)
     {
-
+        this.previousScreen.innerText += this.currentScreen.innerText + operator;
+        this.currentScreen.innerText = '';
     }
     // Compute operation
     compute()
@@ -38,6 +39,7 @@ class Calculator
     updateScreen()
     {
         this.currentScreen.innerText = this.currentScreen;
+        this.previousScreen.innerText = this.previousScreen;
     }
 }
 
@@ -63,6 +65,14 @@ numberButtons.forEach(number =>
             calculator.appendNumber(number.innerText);
             calculator.updateScreen;
             console.log(number.innerText);
+        })
+    })
+
+operatorButtons.forEach(button =>
+    {
+        button.addEventListener('click', () =>
+        {
+            calculator.chooseOperator(button.innerText);
         })
     })
 
