@@ -22,7 +22,7 @@ class Calculator
     // Append number to current screen:
     appendNumber(num)
     {
-
+        this.currentScreen.innerText += num;
     }
     // Choose operator
     chooseOperator(operator)
@@ -37,7 +37,7 @@ class Calculator
     // Update screen
     updateScreen()
     {
-
+        this.currentScreen.innerText = this.currentScreen;
     }
 }
 
@@ -51,4 +51,18 @@ const equalsButton = document.querySelector('[data-equals]');
 // Screen:
 const previousScreen = document.querySelector('[data-previous-operand]');
 const currentScreen = document.querySelector('[data-current-operand]');
+
+// Create calculator instance:
+const calculator = new Calculator(previousScreen, currentScreen);
+
+// Add event listeners to buttons:
+numberButtons.forEach(number =>
+    {
+        number.addEventListener('click', () =>
+        {
+            calculator.appendNumber(number.innerText);
+            calculator.updateScreen;
+            console.log(number.innerText);
+        })
+    })
 
