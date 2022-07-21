@@ -59,3 +59,10 @@ button:hover
     font-size: small;
     color: rgba(255,255,255,.7)
 }
+
+footer
+{
+    position: absolute;
+    transform: translate(225%, -150%);
+    text-align: center;
+}
