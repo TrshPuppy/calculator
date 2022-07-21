@@ -1,10 +1,10 @@
 // Calculator blueprint:
 class Calculator
 {
-    constructor(previousScreen, currentScreen)
+    constructor(previousScreenTextElement, currentScreenTextElement)
     {
-        this.previousScreen = previousScreen;
-        this.currentScreen = currentScreen;
+        this.previousScreenTextElement = previousScreenTextElement;
+        this.currentScreenTextElement = currentScreenTextElement;
     }
 
     // Clear screen
@@ -22,13 +22,12 @@ class Calculator
     // Append number to current screen:
     appendNumber(num)
     {
-        this.currentScreen.innerText += num;
+        this.currentScreenTextElement.innerText = num.toString();
     }
     // Choose operator
     chooseOperator(operator)
     {
-        this.previousScreen.innerText += this.currentScreen.innerText + operator;
-        this.currentScreen.innerText = '';
+    
     }
     // Compute operation
     compute()
@@ -38,8 +37,7 @@ class Calculator
     // Update screen
     updateScreen()
     {
-        this.currentScreen.innerText = this.currentScreen;
-        this.previousScreen.innerText = this.previousScreen;
+        this.currentScreenTextElement.innerText = currentScreenTextElement;
     }
 }
 
@@ -51,11 +49,11 @@ const deleteButton = document.querySelector('[data-delete]');
 const equalsButton = document.querySelector('[data-equals]');
 
 // Screen:
-const previousScreen = document.querySelector('[data-previous-operand]');
-const currentScreen = document.querySelector('[data-current-operand]');
+const previousScreenTextElement = document.querySelector('[data-previous-operand]');
+const currentScreenTextElement = document.querySelector('[data-current-operand]');
 
 // Create calculator instance:
-const calculator = new Calculator(previousScreen, currentScreen);
+const calculator = new Calculator(previousScreenTextElement, currentScreenTextElement);
 
 // Add event listeners to buttons:
 numberButtons.forEach(number =>
@@ -72,7 +70,12 @@ operatorButtons.forEach(button =>
     {
         button.addEventListener('click', () =>
         {
-            calculator.chooseOperator(button.innerText);
+            // calculator.chooseOperator(button.innerText);
         })
     })
+
+// equalsButton.addEventListener('click', () =>
+// {
+//     calculator.compute();
+// })
 
