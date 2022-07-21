@@ -22,12 +22,13 @@ class Calculator
     // Append number to current screen:
     appendNumber(num)
     {
-        this.currentScreenTextElement.innerText = num.toString();
+        this.currentScreenTextElement.innerText += num.toString();
     }
     // Choose operator
     chooseOperator(operator)
     {
-    
+        this.previousScreenTextElement.innerText += currentScreenTextElement.innerText.toString() + operator.toString();
+        this.currentScreenTextElement.innerText = '';
     }
     // Compute operation
     compute()
@@ -70,7 +71,7 @@ operatorButtons.forEach(button =>
     {
         button.addEventListener('click', () =>
         {
-            // calculator.chooseOperator(button.innerText);
+            calculator.chooseOperator(button.innerText);
         })
     })
 
