@@ -81,8 +81,21 @@ class Calculator
             this.previousScreenText.innerText = this.previousOperand + this.operation;
         }
     }
-}
 
+    handleKeyboardEvent(key)
+    {
+        console.log(key);
+        if(key >= 0 && key <= 9)
+        {
+            this.appendNumber(key);
+            this.updateScreen();
+        }
+        
+        
+        
+    }
+
+}
 // Buttons:
 const numberButtons = document.querySelectorAll('[data-number]');
 const operatorButtons = document.querySelectorAll('[data-operator]');
@@ -128,6 +141,12 @@ deleteButton.addEventListener('click', () =>
 {
     calculator.deleteNumber();
     calculator.updateScreen();
+})
+
+// Keyboard event listener:
+window.addEventListener('keydown', e =>
+{
+    calculator.handleKeyboardEvent(e.key)
 })
 
 
