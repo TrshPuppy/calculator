@@ -21,7 +21,7 @@ class Calculator
 
     appendNumber(number)
     {
-
+        this.currentOperand = number;
     }
 
     chooserOperator(operator)
@@ -36,7 +36,7 @@ class Calculator
 
     updateScreen()
     {
-
+        this.currentScreenText.innerText = this.currentOperand;
     }
 }
 
@@ -53,6 +53,14 @@ const currentScreenText = document.querySelector('[data-current-operand]');
 
 // Start calculator instance:
 const calculator = new Calculator(previousScreenText, currentScreenText);
+
+// Add event listeners
+numberButtons.forEach(button => 
+    button.addEventListener('click', () =>
+    {
+        calculator.appendNumber(button.innerText);
+        calculator.updateScreen();
+    }))
 
 
 
