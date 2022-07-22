@@ -56,6 +56,11 @@ class Calculator
                 result = previousNum * currentNum
                 break
             case '÷':
+                if(currentNum === 0)
+                {
+                    result = 8008135
+                    break
+                }
                 result = previousNum / currentNum
                 break
             default:
