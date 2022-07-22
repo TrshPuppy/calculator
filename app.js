@@ -7,8 +7,6 @@ class Calculator
         this.currentScreenText = currentScreenText;
     }
 
-    
-
     // Clear screen
     clearScreen()
     {
@@ -57,6 +55,7 @@ class Calculator
             default:
                 return
         }
+        currentScreenText.textContent = computation;
         console.log(computation);
     }
     // Update screen
@@ -104,5 +103,6 @@ operatorButtons.forEach(button =>
 equalsButton.addEventListener('click', () =>
 {
     calculator.compute();
+    calculator.chooseOperator(equalsButton.textContent);
 })
 
