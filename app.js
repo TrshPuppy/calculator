@@ -1,4 +1,55 @@
+class Calculator
+{
+    constructor(previousScreenText, currentScreenText)
+    {
+        this.previousScreenText = previousScreenText;
+        this.currentScreenText = currentScreenText;
+        this.clearScreen();
+    }
 
+    clearScreen()
+    {
+        this.currentScreen = '';
+        this.previousScreen = '';
+        this.operation = undefined;
+    }
+
+    deleteNumber()
+    {
+
+    }
+
+    appendNumber(number)
+    {
+
+    }
+
+    chooserOperator(operator)
+    {
+
+    }
+
+    calculate()
+    {
+
+    }
+
+    updateScreen()
+    {
+
+    }
+}
+
+// Buttons:
+const numberButtons = document.querySelectorAll('[data-number]');
+const operatorButtons = document.querySelectorAll('[data-operator]');
+const clearButton = document.querySelector('[data-clear]');
+const deleteButton = document.querySelector('[data-delete]');
+const equalsButton = document.querySelector('[data-equals]');
+
+// Screen:
+const previousScreenText = document.querySelector('[data-previous-operand]');
+const currentScreenText = document.querySelector('[data-current-operand]');
 
 
 
