@@ -85,14 +85,21 @@ class Calculator
     handleKeyboardEvent(key)
     {
         console.log(key);
-        if(key >= 0 && key <= 9)
+        if(key >= 0 && key <= 9 || key === '.')
         {
             this.appendNumber(key);
             this.updateScreen();
         }
-        
-        
-        
+        else if(key === '+' || key === '-' || key === '*')
+        {
+            this.chooseOperator(key);
+            this.updateScreen();
+        }
+        else if(key === '/')
+        {
+            this.chooseOperator('÷');
+            this.updateScreen();
+        }
     }
 
 }
