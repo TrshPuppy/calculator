@@ -100,6 +100,22 @@ class Calculator
             this.chooseOperator('÷');
             this.updateScreen();
         }
+        else if(key === 'Backspace')
+        {
+            this.deleteNumber();
+            this.updateScreen();
+        }
+        else if(key === 'Enter' || key === '=')
+        {
+            this.calculate();
+            this.updateScreen();
+        }
+        else if(key === 'Delete')
+        {
+            this.clearScreen();
+            this.updateScreen();
+        }
+        else return;
     }
 
 }
