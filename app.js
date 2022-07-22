@@ -30,7 +30,7 @@ class Calculator
         if(this.currentOperand === '') return;
         if(this.previousOperand !== '')
         {
-            this.compute();
+            this.calculate();
         }
         this.operation = operator;
         this.previousOperand = this.currentOperand;
@@ -106,6 +106,12 @@ operatorButtons.forEach(button =>
 equalsButton.addEventListener('click', () =>
 {
     calculator.calculate();
+    calculator.updateScreen();
+})
+
+clearButton.addEventListener('click', () =>
+{
+    calculator.clearScreen();
     calculator.updateScreen();
 })
 
