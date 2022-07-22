@@ -25,9 +25,11 @@ class Calculator
         this.currentOperand = this.currentOperand.toString() + number.toString();
     }
 
-    chooserOperator(operator)
+    chooseOperator(operator)
     {
-
+        this.operation = operator;
+        this.previousOperand = this.currentOperand;
+        this.currentOperand = '';
     }
 
     calculate()
@@ -38,6 +40,7 @@ class Calculator
     updateScreen()
     {
         this.currentScreenText.innerText = this.currentOperand;
+        this.previousScreenText.innerText = this.previousOperand;
     }
 }
 
@@ -63,6 +66,12 @@ numberButtons.forEach(button =>
         calculator.updateScreen();
     }))
 
+operatorButtons.forEach(button => 
+    button.addEventListener('click', () =>
+    {
+        calculator.chooseOperator(button.innerText);
+        calculator.updateScreen();
+    }))
 
 
 
