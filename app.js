@@ -71,6 +71,10 @@ class Calculator
     {
         this.currentScreenText.innerText = this.currentOperand;
         this.previousScreenText.innerText = this.previousOperand;
+        if(this.operation != undefined)
+        {
+            this.previousScreenText.innerText = this.previousOperand + this.operation;
+        }
     }
 }
 
