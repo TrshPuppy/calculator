@@ -27,6 +27,11 @@ class Calculator
 
     chooseOperator(operator)
     {
+        if(this.currentOperand === '') return;
+        if(this.previousOperand !== '')
+        {
+            this.compute();
+        }
         this.operation = operator;
         this.previousOperand = this.currentOperand;
         this.currentOperand = '';
@@ -34,7 +39,32 @@ class Calculator
 
     calculate()
     {
+        let result;
+        let previousNum = parseFloat(this.previousOperand);
+        let currentNum = parseFloat(this.currentOperand);
+        let operation = this.operation;
 
+        switch(operation)
+        {
+            case '+':
+                result = previousNum + currentNum
+                break
+            case '-':
+                result = previousNum - currentNum
+                break
+            case '*':
+                result = previousNum * currentNum
+                break
+            case '÷':
+                result = previousNum / currentNum
+                break
+            default:
+                return
+        }
+        this.currentOperand = result;
+        this.operation = undefined;
+        this.previousOperand = '';
+        console.log(result);
     }
 
     updateScreen()
@@ -72,6 +102,12 @@ operatorButtons.forEach(button =>
         calculator.chooseOperator(button.innerText);
         calculator.updateScreen();
     }))
+
+equalsButton.addEventListener('click', () =>
+{
+    calculator.calculate();
+    calculator.updateScreen();
+})
 
 
 
