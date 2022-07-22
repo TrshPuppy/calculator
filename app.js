@@ -136,35 +136,35 @@ window.addEventListener('keydown', e =>
 })
 
 function handleKeyboardEvent(key)
+{
+    if(key >= 0 && key <= 9 || key === '.')
     {
-        if(key >= 0 && key <= 9 || key === '.')
-        {
-            calculator.appendNumber(key);
-            calculator.updateScreen();
-        }
-        else if(key === '+' || key === '-' || key === '*')
-        {
-            calculator.chooseOperator(key);
-            calculator.updateScreen();
-        }
-        else if(key === '/')
-        {
-            calculator.chooseOperator('÷');
-            calculator.updateScreen();
-        }
-        else if(key === 'Backspace')
-        {
-            calculator.deleteNumber();
-            calculator.updateScreen();
-        }
-        else if(key === 'Enter' || key === '=')
-        {
-            calculator.calculate();
-            calculator.updateScreen();
-        }
-        else if(key === 'Delete')
-        {
-            calculator.clearScreen();
-            calculator.updateScreen();
-        }
+        calculator.appendNumber(key);
+        calculator.updateScreen();
     }
+    else if(key === '+' || key === '-' || key === '*')
+    {
+        calculator.chooseOperator(key);
+        calculator.updateScreen();
+    }
+    else if(key === '/')
+    {
+        calculator.chooseOperator('÷');
+        calculator.updateScreen();
+    }
+    else if(key === 'Backspace')
+    {
+        calculator.deleteNumber();
+        calculator.updateScreen();
+    }
+    else if(key === 'Enter' || key === '=')
+    {
+        calculator.calculate();
+        calculator.updateScreen();
+    }
+    else if(key === 'Delete')
+    {
+        calculator.clearScreen();
+        calculator.updateScreen();
+    }
+}
