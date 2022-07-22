@@ -7,10 +7,10 @@ class Calculator
         this.clearScreen();
     }
 
-    clearScreen()
+    clearScreen() // w/ default values
     {
-        this.currentScreen = '';
-        this.previousScreen = '';
+        this.currentOperand = '';
+        this.previousOperand = '';
         this.operation = undefined;
     }
 
@@ -51,6 +51,8 @@ const equalsButton = document.querySelector('[data-equals]');
 const previousScreenText = document.querySelector('[data-previous-operand]');
 const currentScreenText = document.querySelector('[data-current-operand]');
 
+// Start calculator instance:
+const calculator = new Calculator(previousScreenText, currentScreenText);
 
 
 
