@@ -56,7 +56,7 @@ class Calculator
                 result = previousNum * currentNum
                 break
             case '÷':
-                if(currentNum === 0)
+                if(currentNum === 0) // If user attempts to divide by 0:
                 {
                     result = 8008135
                     break
@@ -69,7 +69,6 @@ class Calculator
         this.currentOperand = result;
         this.operation = undefined;
         this.previousOperand = '';
-        console.log(result);
     }
 
     updateScreen()
@@ -81,59 +80,23 @@ class Calculator
             this.previousScreenText.innerText = this.previousOperand + this.operation;
         }
     }
-
-    handleKeyboardEvent(key)
-    {
-        console.log(key);
-        if(key >= 0 && key <= 9 || key === '.')
-        {
-            this.appendNumber(key);
-            this.updateScreen();
-        }
-        else if(key === '+' || key === '-' || key === '*')
-        {
-            this.chooseOperator(key);
-            this.updateScreen();
-        }
-        else if(key === '/')
-        {
-            this.chooseOperator('÷');
-            this.updateScreen();
-        }
-        else if(key === 'Backspace')
-        {
-            this.deleteNumber();
-            this.updateScreen();
-        }
-        else if(key === 'Enter' || key === '=')
-        {
-            this.calculate();
-            this.updateScreen();
-        }
-        else if(key === 'Delete')
-        {
-            this.clearScreen();
-            this.updateScreen();
-        }
-        else return;
-    }
-
 }
-// Buttons:
+
+// Retrieve buttons:
 const numberButtons = document.querySelectorAll('[data-number]');
 const operatorButtons = document.querySelectorAll('[data-operator]');
 const clearButton = document.querySelector('[data-clear]');
 const deleteButton = document.querySelector('[data-delete]');
 const equalsButton = document.querySelector('[data-equals]');
 
-// Screen:
+// Retrieve screens:
 const previousScreenText = document.querySelector('[data-previous-operand]');
 const currentScreenText = document.querySelector('[data-current-operand]');
 
 // Start calculator instance:
 const calculator = new Calculator(previousScreenText, currentScreenText);
 
-// Add event listeners:
+// Add button event listeners:
 numberButtons.forEach(button => 
     button.addEventListener('click', () =>
     {
@@ -169,147 +132,39 @@ deleteButton.addEventListener('click', () =>
 // Keyboard event listener:
 window.addEventListener('keydown', e =>
 {
-    calculator.handleKeyboardEvent(e.key)
+    handleKeyboardEvent(e.key);
 })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // Calculator blueprint:
-// class Calculator
-// {
-//     constructor(previousScreenText, currentScreenText, currentOperator)
-//     {
-//         this.previousScreenText = previousScreenText;
-//         this.currentScreenText = currentScreenText;
-//     }
-
-//     // Clear screen
-//     clearScreen()
-//     {
-        
-//     }
-//     // Delete single number from current screen:
-//     deleteNumber()
-//     {
-
-//     }
-//     // Append number to current screen:
-//     appendNumber(num)
-//     {
-//         if(num === '.' && currentScreenText.textContent.includes('.')) return;
-//         currentScreenText.textContent += num;
-//     }
-//     // Choose operator
-//     chooseOperator(operator)
-//     {
-//         currentOperator = operator;
-//         console.log(currentOperator);
-//     }
-//     // Compute operation
-//     compute()
-//     {
-//         console.log('click');
-//         let computation;
-//         let previous = parseFloat(this.previousScreenText.textContent);
-//         console.log(previous);
-//         let current = parseFloat(this.currentScreenText.textContent);
-//         console.log(current);
-//         switch (currentOperator)
-//         {
-//             case '+':
-//                 computation = previous + current
-//                 break
-//             case '-':
-//                 computation = previous - current
-//                 break
-//             case '*':
-//                 computation = previous * current
-//                 break
-//             case '÷':
-//                 computation = previous / current
-//                 break
-//             default:
-//                 return
-//         }
-//         currentScreenText.textContent = computation;
-//         console.log(computation);
-//     }
-//     // Update screen
-//     updateScreen()
-//     {
-//         previousScreenText.textContent += currentScreenText.textContent + currentOperator;
-//         currentScreenText.textContent = '';
-//     }
-// }
-
-// // Buttons:
-// const numberButtons = document.querySelectorAll('[data-number]');
-// const operatorButtons = document.querySelectorAll('[data-operator]');
-// const clearButton = document.querySelector('[data-clear]');
-// const deleteButton = document.querySelector('[data-delete]');
-// const equalsButton = document.querySelector('[data-equals]');
-// let currentOperator = undefined;
-// let operationString = '';
-
-// // Screen:
-// const previousScreenText = document.querySelector('[data-previous-operand]');
-// const currentScreenText = document.querySelector('[data-current-operand]');
-
-// // Create calculator instance:
-// const calculator = new Calculator(previousScreenText, currentScreenText, currentOperator);
-
-// // Add event listeners to buttons:
-// numberButtons.forEach(number =>
-//     {
-//         number.addEventListener('click', () =>
-//         {
-//             calculator.appendNumber(number.textContent);
-//         })
-//     })
-
-// operatorButtons.forEach(button =>
-//     {
-//         button.addEventListener('click', () =>
-//         {
-//             calculator.chooseOperator(button.textContent);
-//             calculator.updateScreen();
-//         })
-//     })
-
-// equalsButton.addEventListener('click', () =>
-// {
-//     calculator.compute();
-//     calculator.chooseOperator(equalsButton.textContent);
-// })
-
+function handleKeyboardEvent(key)
+    {
+        if(key >= 0 && key <= 9 || key === '.')
+        {
+            calculator.appendNumber(key);
+            calculator.updateScreen();
+        }
+        else if(key === '+' || key === '-' || key === '*')
+        {
+            calculator.chooseOperator(key);
+            calculator.updateScreen();
+        }
+        else if(key === '/')
+        {
+            calculator.chooseOperator('÷');
+            calculator.updateScreen();
+        }
+        else if(key === 'Backspace')
+        {
+            calculator.deleteNumber();
+            calculator.updateScreen();
+        }
+        else if(key === 'Enter' || key === '=')
+        {
+            calculator.calculate();
+            calculator.updateScreen();
+        }
+        else if(key === 'Delete')
+        {
+            calculator.clearScreen();
+            calculator.updateScreen();
+        }
+    }
