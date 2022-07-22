@@ -16,7 +16,7 @@ class Calculator
 
     deleteNumber()
     {
-
+        this.currentOperand = this.currentOperand.toString().slice(0, -1);
     }
 
     appendNumber(number)
@@ -88,7 +88,7 @@ const currentScreenText = document.querySelector('[data-current-operand]');
 // Start calculator instance:
 const calculator = new Calculator(previousScreenText, currentScreenText);
 
-// Add event listeners
+// Add event listeners:
 numberButtons.forEach(button => 
     button.addEventListener('click', () =>
     {
@@ -112,6 +112,12 @@ equalsButton.addEventListener('click', () =>
 clearButton.addEventListener('click', () =>
 {
     calculator.clearScreen();
+    calculator.updateScreen();
+})
+
+deleteButton.addEventListener('click', () =>
+{
+    calculator.deleteNumber();
     calculator.updateScreen();
 })
 
